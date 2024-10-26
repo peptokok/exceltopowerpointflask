@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to PowerPoint Creator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div class="app-container" data-theme="corporate">
+        <div class="toolbar">
+            <div class="toolbar-row top-row">
+                <div class="toolbar-button excel-import" title="Import Excel File">
+                    <i class="fas fa-file-excel"></i>
+                    <span>Import Excel</span>
+                    <input type="file" id="excelFile" accept=".xlsx,.xls" hidden>
+                </div>
+
+                <div class="toolbar-center">
+                    <select id="themeSelector" class="theme-selector" title="Select Theme">
+                        <option value="corporate">Corporate</option>
+                        <option value="modern">Modern Dark</option>
+                        <option value="nature">Nature</option>
+                        <option value="elegant">Elegant</option>
+                        <option value="warm">Warm</option>
+                    </select>
+                </div>
+
+                <div class="toolbar-button powerpoint-export" id="exportButton" title="Export to PowerPoint">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <span>Export PPT</span>
+                </div>
+            </div>
+
+            <div class="toolbar-row bottom-row">
+                <div class="aspect-ratio-buttons">
+                    <button class="toolbar-button ratio-button" data-ratio="4:3" title="4:3 Aspect Ratio">
+                        <i class="fas fa-tv"></i>
+                        <span>4:3</span>
+                    </button>
+                    <button class="toolbar-button ratio-button active" data-ratio="16:9" title="16:9 Aspect Ratio">
+                        <i class="fas fa-wide-tv"></i>
+                        <span>16:9</span>
+                    </button>
+                    <button class="toolbar-button ratio-button" data-ratio="16:10" title="16:10 Aspect Ratio">
+                        <i class="fas fa-rectangle-wide"></i>
+                        <span>16:10</span>
+                    </button>
+                </div>
+
+                <div class="element-controls">
+                    <button class="toolbar-button" id="addTextBox" title="Add Text Box">
+                        <i class="fas fa-font"></i>
+                    </button>
+                    <button class="toolbar-button" id="addImage" title="Add Image">
+                        <i class="fas fa-image"></i>
+                    </button>
+                </div>
+
+                <div class="size-controls">
+                    <div class="size-input">
+                        <label>W:</label>
+                        <input type="number" id="elementWidth" step="0.1" min="0.1" value="5.0">
+                        <span>cm</span>
+                    </div>
+                    <div class="size-input">
+                        <label>H:</label>
+                        <input type="number" id="elementHeight" step="0.1" min="0.1" value="2.0">
+                        <span>cm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="column-list" id="columnList">
+                    <h3>Excel Columns</h3>
+                    <!-- Column items will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="presentation-container">
+                <div class="presentation-canvas" id="presentationCanvas">
+                    <div class="canvas-content" id="canvasContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

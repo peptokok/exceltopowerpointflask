@@ -1,0 +1,270 @@
+:root {
+    --toolbar-height: 120px;
+    --toolbar-row-height: 56px;
+    --toolbar-button-size: 40px;
+    --sidebar-width: 280px;
+    --primary-color: #1e40af;
+    --secondary-color: #3b82f6;
+    --bg-color: #f0f7ff;
+    --toolbar-bg: #ffffff;
+    --sidebar-bg: #f8fafc;
+    --text-color: #1e293b;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--bg-color);
+}
+
+/* Toolbar Styles */
+.toolbar {
+    height: var(--toolbar-height);
+    background: var(--toolbar-bg);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toolbar-row {
+    height: var(--toolbar-row-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.top-row {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.bottom-row {
+    padding-top: 8px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 24px;
+}
+
+.toolbar-button {
+    height: var(--toolbar-button-size);
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: white;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.toolbar-button:hover {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.toolbar-button.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.toolbar-button i {
+    font-size: 16px;
+}
+
+.toolbar-button.excel-import,
+.toolbar-button.powerpoint-export {
+    width: 140px;
+    height: 44px;
+    font-weight: 500;
+}
+
+.toolbar-button.excel-import {
+    background: #217346;
+    color: white;
+    border-color: #217346;
+}
+
+.toolbar-button.powerpoint-export {
+    background: #B7472A;
+    color: white;
+    border-color: #B7472A;
+}
+
+/* Size Controls */
+.size-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid #e2e8f0;
+}
+
+.size-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.size-input label {
+    font-size: 13px;
+    color: var(--text-color);
+}
+
+.size-input input {
+    width: 60px;
+    height: 28px;
+    padding: 0 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.size-input span {
+    font-size: 13px;
+    color: var(--text-color);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.presentation-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f1f5f9;
+    overflow: hidden;
+}
+
+.presentation-canvas {
+    position: relative;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+.canvas-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    background: white;
+}
+
+/* Theme Selector */
+.theme-selector {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-color);
+    background: white;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+/* Column List */
+.column-list {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.column-list h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.column-item {
+    padding: 10px;
+    margin: 8px 0;
+    background: var(--toolbar-bg);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: move;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.column-item:hover {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+/* Draggable Elements */
+.draggable {
+    position: absolute;
+    background: white;
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    cursor: move;
+    user-select: none;
+    min-width: 100px;
+    min-height: 30px;
+}
+
+.draggable.selected {
+    border: 2px solid var(--primary-color);
+}
+
+/* Apply theme colors */
+.app-container[data-theme] {
+    background-color: var(--bg-color);
+}
+
+.app-container[data-theme] .toolbar {
+    background-color: var(--toolbar-bg);
+    border-color: var(--secondary-color);
+}
+
+.app-container[data-theme] .sidebar {
+    background-color: var(--sidebar-bg);
+    border-color: var(--secondary-color);
+}
+
+/* Aspect Ratio Buttons */
+.aspect-ratio-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Element Controls */
+.element-controls {
+    display: flex;
+    gap: 8px;
+}
